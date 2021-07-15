@@ -7,5 +7,6 @@
   "word-count-list-item": "Word Count",
   "dkim-list-item": "Pass DKIM validation",
   "spf-list-item": "Pass SPF validation",
-  "dmarc-list-item": "Pass DMARC validation"
+  "dmarc-list-item": "Pass DMARC validation",
+  "body-list-item": "Email body"
 }

@@ -29,14 +29,17 @@ const RightWrapper = styled.div`
 `;
 
 const AdditionalInfo = styled.ul`
+  list-style-type: none;
   li {
-    display: flex;
-    align-items: center;
+    &:not(:last-of-type) {
+      display: flex;
+      align-items: center;
+    }
   }
 `;
 
-const getIcon = (pass) => 
-  pass ? <Check style={{color: 'green'}}/> : <Clear style={{color: 'red'}} />;
+const getIcon = (pass) =>
+  pass ? <Check style={{ color: 'green' }} /> : <Clear style={{ color: 'red' }} />;
 
 const ListItem = ({
   subject,
@@ -44,6 +47,7 @@ const ListItem = ({
   from,
   authHeaders,
   wordCount,
+  body,
   t,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -60,11 +64,12 @@ const ListItem = ({
       </Header>
       <Collapse in={isOpen}>
         <AdditionalInfo>
-          <li>{t('app:from-list-item')}: {from}</li>
-          <li>{t('app:word-count-list-item')}: {wordCount}</li>
-          <li>{t('app:dkim-list-item')}: {getIcon(dkim)}</li>
-          <li>{t('app:spf-list-item')}: {getIcon(spf)}</li>
-          <li>{t('app:dmarc-list-item')}: {getIcon(dmarc)}</li>
+          <li><b>{t('app:from-list-item')}:</b> {from}</li>
+          <li><b>{t('app:word-count-list-item')}:</b> {wordCount}</li>
+          <li><b>{t('app:dkim-list-item')}:</b> {getIcon(dkim)}</li>
+          <li><b>{t('app:spf-list-item')}:</b> {getIcon(spf)}</li>
+          <li><b>{t('app:dmarc-list-item')}:</b> {getIcon(dmarc)}</li>
+          <li><b>{t('app:body-list-item')}:</b> {body}</li>
         </AdditionalInfo>
       </Collapse>
     </Wrapper>
@@ -81,6 +86,7 @@ ListItem.propTypes = {
     dmarc: PropTypes.bool,
   }).isRequired,
   wordCount: PropTypes.number.isRequired,
+  body: PropTypes.string.isRequired,
   t: PropTypes.func.isRequired,
 };
 
