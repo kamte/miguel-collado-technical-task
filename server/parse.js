@@ -14,13 +14,15 @@ module.exports = function (got) {
   console.log('email-sift-web: parse.js: running...');
 
   const getAuthHeaders = (headers = {}) => {
-    const auth = headers['Authentication-Results'].split(' ')
+    const authHeaders = headers['Authentication-Results'] || '';
+    const auth = authHeaders.split(' ');
+
     return {
       dkim: auth.includes('dkim=pass'),
       spf: auth.includes('spf=pass'),
       dmarc: auth.includes('dmarc=pass'),
     }
-  }
+  };
 
   const results = inData.data.map(({ value: valueBuffer }) => {
     // Parse the JMAP information for each message more info here: https://docs.redsift.com/docs/server-code-jmap
