@@ -60,11 +60,11 @@ const ListItem = ({
       </Header>
       <Collapse in={isOpen}>
         <AdditionalInfo>
-          <li>{t('from-list-item')}: {from}</li>
-          <li>{t('word-count-list-item')}: {wordCount}</li>
-          <li>{t('dkim-list-item')}: {getIcon(dkim)}</li>
-          <li>{t('spf-list-item')}: {getIcon(spf)}</li>
-          <li>{t('dmarc-list-item')}: {getIcon(dmarc)}</li>
+          <li>{t('app:from-list-item')}: {from}</li>
+          <li>{t('app:word-count-list-item')}: {wordCount}</li>
+          <li>{t('app:dkim-list-item')}: {getIcon(dkim)}</li>
+          <li>{t('app:spf-list-item')}: {getIcon(spf)}</li>
+          <li>{t('app:dmarc-list-item')}: {getIcon(dmarc)}</li>
         </AdditionalInfo>
       </Collapse>
     </Wrapper>
