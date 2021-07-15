@@ -1,6 +1,8 @@
 {
   "title-home": "DMARC Viewer",
   "description-home": "I'm a React Sift displaying {{count}} emails.",
+  "daily-count-home": "Daily count: {{count}} words",
+  "weekly-count-home": "Weekly count: {{count}} words",
   "from-list-item": "From",
   "word-count-list-item": "Word Count",
   "dkim-list-item": "Pass DKIM validation",

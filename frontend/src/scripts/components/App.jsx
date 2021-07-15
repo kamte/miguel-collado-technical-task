@@ -29,6 +29,9 @@ class App extends Component {
       <AppWrapper>
         <h1>{t('app:title-home')}</h1>
         <h4>{t('app:description-home', {count: counts.messageTotal})}</h4>
+        <h4>{t('app:daily-count-home', {count: counts.dailyTotal})}</h4>
+        <h4>{t('app:weekly-count-home', {count: counts.weeklyTotal})}</h4>
+
         <List>
           { messages.map((m) => <ListItem key={m.id} t={t} {...m}/>) }
         </List>
