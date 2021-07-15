@@ -33,7 +33,10 @@ class App extends Component {
         <h4>{t('app:weekly-count-home', {count: counts.weeklyTotal})}</h4>
 
         <List>
-          { messages.map((m) => <ListItem key={m.id} t={t} {...m}/>) }
+          {messages
+            .sort((a, b) => b.date.localeCompare(a.date)) // reverse order to show newer messages first
+            .map((m) => <ListItem key={m.id} t={t} {...m}/>
+          )}
         </List>
       </AppWrapper>
     );
