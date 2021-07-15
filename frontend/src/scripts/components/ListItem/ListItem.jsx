@@ -43,6 +43,7 @@ const ListItem = ({
   date,
   from,
   authHeaders,
+  wordCount,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { dkim, spf, dmarc } = authHeaders;
@@ -62,6 +63,7 @@ const ListItem = ({
           <li>Pass DKIM validation: {getIcon(dkim)}</li>
           <li>Pass SPF validation: {getIcon(spf)}</li>
           <li>Pass DMARC validation: {getIcon(dmarc)}</li>
+          <li>Word count: {wordCount}</li>
         </AdditionalInfo>
       </Collapse>
     </Wrapper>
@@ -76,7 +78,8 @@ ListItem.propTypes = {
     dkim: PropTypes.bool,
     spf: PropTypes.bool,
     dmarc: PropTypes.bool,
-  }).isRequired
+  }).isRequired,
+  wordCount: PropTypes.number.isRequired,
 };
 
 export default ListItem;
