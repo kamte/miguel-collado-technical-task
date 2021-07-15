@@ -31,6 +31,7 @@ const RightWrapper = styled.div`
 const AdditionalInfo = styled.ul`
   list-style-type: none;
   li {
+    overflow-x: auto;
     &:not(:last-of-type) {
       display: flex;
       align-items: center;
