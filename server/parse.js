@@ -27,7 +27,7 @@ module.exports = function (got) {
   const results = inData.data.map(({ value: valueBuffer }) => {
     // Parse the JMAP information for each message more info here: https://docs.redsift.com/docs/server-code-jmap
     const emailJmap = JSON.parse(valueBuffer);
-    const { id, threadId, headers, subject, textBody, strippedHtmlBody } = emailJmap;
+    const { id, threadId, headers, subject, textBody, date, strippedHtmlBody } = emailJmap;
 
     // Not all emails contain a textBody so we do a cascade selection
     const body = textBody || strippedHtmlBody || '';
@@ -41,6 +41,7 @@ module.exports = function (got) {
       subject,
       threadId,
       wordCount,
+      date,
       authHeaders,
     };
 
