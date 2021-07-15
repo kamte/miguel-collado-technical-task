@@ -2,10 +2,18 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import { translate } from 'react-i18next';
 
+import List from './List'
 import ListItem from './ListItem'
+
+const AppWrapper = styled.div`
+  h1, h4 {
+    margin-left: 12px;
+  }
+`
 
 class App extends Component {
   static propTypes = {
@@ -19,12 +27,13 @@ class App extends Component {
     console.log('props', this.props);
 
     return (
-      <div>
+      <AppWrapper>
         <h1>{t('app:title-home')}</h1>
         <h4>{t('app:description-home', {count: counts.messageTotal})}</h4>
-
-        { messages.map((m) => <ListItem key={m.id} {...m} />) }
-      </div>
+        <List>
+          { messages.map((m) => <ListItem key={m.id} {...m} />) }
+        </List>
+      </AppWrapper>
     );
   }
 }

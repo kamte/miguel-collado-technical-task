@@ -7,34 +7,36 @@ import Collapse from '@material-ui/core/Collapse';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 8px;
+  margin-left: 12px;
+  margin-right: 12px;
   border: 1px solid #BABABA;
   font-family: Raleway,sans-serif;
   cursor: pointer;
-  transition: height 200ms display 200ms;
-`
+  background-color: white;
+`;
 
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-`
+`;
 
 const RightWrapper = styled.div`
   display: flex;
   align-items: center;
-`
+`;
 
 const AdditionalInfo = styled.ul`
   li {
     display: flex;
     align-items: center;
   }
-`
+`;
 
 const getIcon = (pass) => 
-  pass ? <Check style={{color: 'green'}}/> : <Clear style={{color: 'red'}} />
+  pass ? <Check style={{color: 'green'}}/> : <Clear style={{color: 'red'}} />;
 
 const ListItem = ({
   subject,
@@ -43,7 +45,7 @@ const ListItem = ({
   authHeaders,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { dkim, spf, dmarc } = authHeaders
+  const { dkim, spf, dmarc } = authHeaders;
 
   return (
     <Wrapper onClick={() => setIsOpen(!isOpen)}>
