@@ -39,6 +39,7 @@ const getIcon = (pass) =>
 const ListItem = ({
   subject,
   date,
+  from,
   authHeaders,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,6 +56,7 @@ const ListItem = ({
       </Header>
       <Collapse in={isOpen}>
         <AdditionalInfo>
+          <li>From: {from}</li>
           <li>Pass DKIM validation: {getIcon(dkim)}</li>
           <li>Pass SPF validation: {getIcon(spf)}</li>
           <li>Pass DMARC validation: {getIcon(dmarc)}</li>
@@ -67,6 +69,7 @@ const ListItem = ({
 ListItem.propTypes = {
   subject: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
+  from: PropTypes.string.isRequired,
   authHeaders: PropTypes.shape({
     dkim: PropTypes.bool,
     spf: PropTypes.bool,
