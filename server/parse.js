@@ -26,7 +26,7 @@ module.exports = function (got) {
       dkim: isPassingHeader(headerArray, 'dkim'),
       spf: isPassingHeader(headerArray, 'spf'),
       dmarc: isPassingHeader(headerArray, 'dmarc'),
-    }
+    };
   };
 
   const results = inData.data.map(({ value: valueBuffer }) => {
