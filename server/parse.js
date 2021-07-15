@@ -13,14 +13,19 @@ module.exports = function (got) {
 
   console.log('email-sift-web: parse.js: running...');
 
+  const isPassingHeader = (authHeaders, headerName) => 
+    authHeaders
+      .filter(el => el.startsWith(headerName))
+      .every(el => el === `${headerName}=pass`);
+
   const getAuthHeaders = (headers = {}) => {
     const authHeaders = headers['Authentication-Results'] || '';
-    const auth = authHeaders.split(' ');
+    const headerArray = authHeaders.split(' ');
 
     return {
-      dkim: auth.includes('dkim=pass'),
-      spf: auth.includes('spf=pass'),
-      dmarc: auth.includes('dmarc=pass'),
+      dkim: isPassingHeader(headerArray, 'dkim'),
+      spf: isPassingHeader(headerArray, 'spf'),
+      dmarc: isPassingHeader(headerArray, 'dmarc'),
     }
   };
 
