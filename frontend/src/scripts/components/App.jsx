@@ -24,14 +24,13 @@ class App extends Component {
   render() {
     const { t, data } = this.props;
     const { counts, messages } = data;
-    console.log('props', this.props);
 
     return (
       <AppWrapper>
         <h1>{t('app:title-home')}</h1>
         <h4>{t('app:description-home', {count: counts.messageTotal})}</h4>
         <List>
-          { messages.map((m) => <ListItem key={m.id} {...m} />) }
+          { messages.map((m) => <ListItem key={m.id} t={t} {...m}/>) }
         </List>
       </AppWrapper>
     );

@@ -1,4 +1,9 @@
 {
   "title-home": "DMARC Viewer",
-  "description-home": "I'm a React Sift displaying {{count}} emails."
+  "description-home": "I'm a React Sift displaying {{count}} emails.",
+  "from-list-item": "From",
+  "word-count-list-item": "Word Count",
+  "dkim-list-item": "Pass DKIM validation",
+  "spf-list-item": "Pass SPF validation",
+  "dmarc-list-item": "Pass DMARC validation"
 }
