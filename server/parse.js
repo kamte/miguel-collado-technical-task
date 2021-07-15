@@ -13,14 +13,24 @@ module.exports = function (got) {
 
   console.log('email-sift-web: parse.js: running...');
 
+  const getAuthHeaders = (headers = {}) => {
+    const auth = headers['Authentication-Results'].split(' ')
+    return {
+      dkim: auth.includes('dkim=pass'),
+      spf: auth.includes('spf=pass'),
+      dmarc: auth.includes('dmarc=pass'),
+    }
+  }
+
   const results = inData.data.map(({ value: valueBuffer }) => {
     // Parse the JMAP information for each message more info here: https://docs.redsift.com/docs/server-code-jmap
     const emailJmap = JSON.parse(valueBuffer);
-    const { id, threadId, subject, textBody, strippedHtmlBody } = emailJmap;
+    const { id, threadId, headers, subject, textBody, strippedHtmlBody } = emailJmap;
 
     // Not all emails contain a textBody so we do a cascade selection
     const body = textBody || strippedHtmlBody || '';
     const wordCount = countWords(body);
+    const authHeaders = getAuthHeaders(headers)
 
     const key = `${threadId}/${id}`;
     const value = {
@@ -28,7 +38,8 @@ module.exports = function (got) {
       body,
       subject,
       threadId,
-      wordCount
+      wordCount,
+      authHeaders,
     };
 
     // Emit into "messages-st" store so count can be calculated by the "Count" node
