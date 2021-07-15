@@ -40,5 +40,9 @@
     "style-loader": "^0.23.0",
     "webpack": "^4.20.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@material-ui/core": "^4.12.1",
+    "@material-ui/icons": "^4.11.2",
+    "styled-components": "^5.3.0"
+  }
 }
